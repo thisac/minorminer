@@ -25,8 +25,12 @@ import os
 import sys
 import time
 import signal
-import multiprocessing
 import unittest
+
+import multiprocessing
+# Default startmethod has been changed from 'fork' to 'forkserver' in Python 3.14.
+# See https://docs.python.org/3.14/whatsnew/3.14.html#deprecated for details.
+multiprocessing.set_start_method("fork")
 
 # Given that this test is in the tests directory, the calibration data should be
 # in a sub directory. Use the path of this source file to find the calibration
